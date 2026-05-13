@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Hub - AI-Powered Learning</title>
+    <meta name="description" content="A futuristic AI-powered educational platform for 10th and 12th standard students.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-animated">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Main Container for SPA Routing -->
+    <div id="app-container">
+        
+        <!-- PREMIUM ONBOARDING MODAL -->
+        <div id="onboarding-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 5, 20, 0.85); backdrop-filter: blur(15px); display: flex; justify-content: center; align-items: center; z-index: 1000;">
+            <div class="glass-card" style="padding: 3rem; width: 90%; max-width: 500px; text-align: center; animation: fadeIn 0.6s ease-out; box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(139, 92, 246, 0.1);">
+                <div style="margin-bottom: 2rem;">
+                    <i class="fa-solid fa-graduation-cap" style="font-size: 3.5rem; background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                    <h2 style="font-size: 2.2rem; margin-top: 1rem; color: white; letter-spacing: -1px;">Welcome to Student Hub</h2>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem; font-size: 1.1rem;">Personalize your AI learning experience</p>
+                </div>
+
+                <div class="input-group" style="text-align: left;">
+                    <label for="user-name">Student Name</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="user-name" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+
+                <div class="input-group" style="text-align: left;">
+                    <label for="user-state">State / Board</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <select id="user-state" required class="glass-select" style="padding-left: 3.5rem; width: 100%; border-radius: 12px; height: 55px; appearance: none;">
+                            <option value="" disabled selected>Select your state</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                            <option value="CBSE">CBSE (Central Board)</option>
+                            <option value="ICSE">ICSE (Central Board)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group" style="text-align: left; margin-bottom: 2.5rem;">
+                    <label for="user-class">Standard</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        <select id="user-class" required class="glass-select" style="padding-left: 3.5rem; width: 100%; border-radius: 12px; height: 55px; appearance: none;">
+                            <option value="" disabled selected>Select your class</option>
+                            <option value="10th">10th Standard</option>
+                            <option value="12th">12th Standard (Science)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="saveUser()" class="btn-primary" style="padding: 1.2rem; font-size: 1.2rem;">
+                    <span>Launch Dashboard</span>
+                    <i class="fa-solid fa-rocket"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- DASHBOARD LAYOUT -->
+        <div id="dashboard-layout">
+            <!-- Navbar -->
+            <nav class="glass-navbar">
+                <div class="nav-brand" onclick="navigateTo('home')">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Student Hub</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#" onclick="navigateTo('home')" class="nav-link active" data-route="home"><i class="fa-solid fa-house"></i> Home</a>
+                    <a href="#" onclick="navigateTo('videos')" class="nav-link" data-route="videos"><i class="fa-solid fa-video"></i> Videos</a>
+                    <a href="#" onclick="navigateTo('notes')" class="nav-link" data-route="notes"><i class="fa-solid fa-book"></i> Notes</a>
+                    <a href="#" onclick="navigateTo('practice')" class="nav-link" data-route="practice"><i class="fa-solid fa-pen-nib"></i> Practice</a>
+                    <a href="#" onclick="navigateTo('quiz')" class="nav-link" data-route="quiz"><i class="fa-solid fa-stopwatch"></i> Quiz</a>
+                    <a href="#" onclick="navigateTo('pyqs')" class="nav-link" data-route="pyqs"><i class="fa-solid fa-file-lines"></i> Previous Year Papers</a>
+                </div>
+                <!-- Global Search -->
+                <div class="global-search-container" style="position: relative; margin: 0 15px; display: flex; align-items: center;">
+                    <div class="search-input-wrapper" style="position: relative;">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                        <input type="text" id="global-search" class="glass-input" placeholder="Search chapters, notes..." autocomplete="off" style="padding-left: 40px; border-radius: 20px; width: 250px; height: 40px; font-size: 0.95rem; transition: all 0.3s ease;">
+                    </div>
+                    <div id="global-search-results" class="search-dropdown hidden">
+                        <!-- Results injected via JS -->
+                    </div>
+                </div>
+                <div class="profile-container" style="position: relative; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <span id="display-name">Student</span>
+                    <div id="logout-menu" style="display: none; position: absolute; right: 0; top: 50px; background: #2d2d3f; border: 1px solid #444; border-radius: 5px; padding: 10px; z-index: 200; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                        <button onclick="logout()" style="color: #ff7675; background: none; border: none; cursor: pointer; font-size: 1rem; width: 100%; text-align: center;">Logout</button>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="dashboard-content">
+                
+                <!-- HOME PAGE -->
+                <section id="home-page" class="page">
+                    <div class="hero-section">
+                        <h1 class="greeting">Welcome, <span id="hero-user-name" class="gradient-text">Student</span> 👋</h1>
+                        <p>Your personalized AI-powered learning journey starts here.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="glass-card feature-card" onclick="navigateTo('videos')">
+                            <div class="icon-wrapper blue-glow"><i class="fa-solid fa-video"></i></div>
+                            <h3>Video Lectures</h3>
+                            <p>Curated YouTube videos for your standard</p>
+                            <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                        <div class="glass-card feature-card" onclick="navigateTo('notes')">
+                            <div class="icon-wrapper purple-glow"><i class="fa-solid fa-book"></i></div>
+                            <h3>Smart Notes</h3>
+                            <p>Chapter-wise formulas, definitions & summaries</p>
+                            <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                        <div class="glass-card feature-card" onclick="navigateTo('practice')">
+                            <div class="icon-wrapper green-glow"><i class="fa-solid fa-pen-nib"></i></div>
+                            <h3>Practice Questions</h3>
+                            <p>PYQs, numericals, and important questions</p>
+                            <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                        <div class="glass-card feature-card" onclick="navigateTo('quiz')">
+                            <div class="icon-wrapper pink-glow"><i class="fa-solid fa-stopwatch"></i></div>
+                            <h3>Interactive Quizzes</h3>
+                            <p>Test your knowledge with timed MCQs</p>
+                            <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                        <div class="glass-card feature-card" onclick="navigateTo('pyqs')">
+                            <div class="icon-wrapper red-glow" style="background: rgba(255, 82, 82, 0.1); color: #ff5252; box-shadow: 0 0 20px rgba(255, 82, 82, 0.2);"><i class="fa-solid fa-file-lines"></i></div>
+                            <h3>Previous Year Papers</h3>
+                            <p>PYQs of every subject</p>
+                            <div class="card-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIDEOS PAGE -->
+                <section id="videos-page" class="page hidden">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-video"></i> Video Dashboard</h2>
+                        <div class="filters">
+                            <input type="text" id="video-search" class="glass-input" placeholder="Search videos...">
+                            <select id="video-subject-filter" class="glass-select">
+                                <option value="all">All Subjects</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="videos-container" class="content-grid">
+                        <!-- Videos will be injected here via JS -->
+                    </div>
+                </section>
+
+                <!-- NOTES PAGE -->
+                <section id="notes-page" class="page hidden">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-book"></i> Smart Notes</h2>
+                    </div>
+                    <div class="layout-sidebar">
+                        <aside class="glass-sidebar" id="notes-sidebar">
+                            <h3>Subjects</h3>
+                            <ul id="notes-subject-list" class="sidebar-list">
+                                <!-- Subjects injected via JS -->
+                            </ul>
+                        </aside>
+                        <div class="content-main" id="notes-content-area">
+                            <div class="placeholder-msg">Select a subject to view chapters</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PRACTICE PAGE -->
+                <section id="practice-page" class="page hidden">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-pen-nib"></i> Practice Dashboard</h2>
+                    </div>
+                    <div class="layout-sidebar">
+                        <aside class="glass-sidebar" id="practice-sidebar">
+                            <h3>Subjects</h3>
+                            <ul id="practice-subject-list" class="sidebar-list">
+                                <!-- Subjects injected via JS -->
+                            </ul>
+                        </aside>
+                        <div class="content-main" id="practice-content-area">
+                             <div class="placeholder-msg">Select a subject to practice</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- QUIZ PAGE -->
+                <section id="quiz-page" class="page hidden">
+                    <div id="quiz-setup">
+                        <div class="section-header">
+                            <h2><i class="fa-solid fa-stopwatch"></i> Quiz Setup</h2>
+                        </div>
+                        <div class="glass-card quiz-setup-card">
+                            <div class="input-group">
+                                <label>Select Subject</label>
+                                <select id="quiz-subject" class="glass-select">
+                                    <option value="" disabled selected>Choose Subject</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Select Chapter</label>
+                                <select id="quiz-chapter" class="glass-select" disabled>
+                                    <option value="" disabled selected>Choose Chapter</option>
+                                </select>
+                            </div>
+                            <button id="start-quiz-btn" class="btn-primary" disabled>Start Quiz</button>
+                        </div>
+                    </div>
+                    
+                    <div id="quiz-active" class="hidden">
+                        <div class="quiz-header glass-card">
+                            <div class="quiz-info">
+                                <h3 id="quiz-title">Subject - Chapter</h3>
+                                <div class="progress-container">
+                                    <div class="progress-bar" id="quiz-progress"></div>
+                                </div>
+                                <span id="quiz-question-count">Question 1/10</span>
+                            </div>
+                            <div class="quiz-timer glass-badge">
+                                <i class="fa-solid fa-clock"></i> <span id="time-left">10:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card question-card" id="question-container">
+                            <!-- Question injected via JS -->
+                        </div>
+                    </div>
+                    
+                    <div id="quiz-results" class="hidden">
+                        <div class="glass-card result-card">
+                            <div class="result-circle">
+                                <h2 id="result-score">80%</h2>
+                                <p id="result-text">Excellent!</p>
+                            </div>
+                            <div class="result-stats">
+                                <div class="stat"><i class="fa-solid fa-check text-green"></i> <span id="correct-count">8</span> Correct</div>
+                                <div class="stat"><i class="fa-solid fa-xmark text-red"></i> <span id="wrong-count">2</span> Wrong</div>
+                            </div>
+                            <button onclick="resetQuiz()" class="btn-secondary">Try Another Quiz</button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- PYQS PAGE -->
+                <section id="pyqs-page" class="page hidden">
+                    <div class="section-header">
+                        <h2><i class="fa-solid fa-file-lines"></i> Previous Year Papers</h2>
+                    </div>
+                    <div class="layout-sidebar">
+                        <aside class="glass-sidebar" id="pyqs-sidebar">
+                            <h3>Subjects</h3>
+                            <ul id="pyqs-subject-list" class="sidebar-list">
+                                <!-- Subjects injected via JS -->
+                            </ul>
+                        </aside>
+                        <div class="content-main" id="pyqs-content-area">
+                             <div class="placeholder-msg">Select a subject to view past papers</div>
+                        </div>
+                    </div>
+                </section>
+                
+            </main>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
